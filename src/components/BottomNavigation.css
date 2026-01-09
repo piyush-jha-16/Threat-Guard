@@ -1,0 +1,129 @@
+.bottom-navigation {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1f1f;
+  padding: 16px 24px;
+  border-radius: 60px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  gap: 12px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 20px;
+  transition: all 0.3s ease;
+  color: #6b7280;
+  min-width: 90px;
+}
+
+.nav-item:hover {
+  color: #9ca3af;
+  transform: translateY(-1px);
+}
+.nav-item.active {
+  color: #E97583;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active .nav-icon {
+  background: linear-gradient(135deg, #E97583 0%, #E85D6F 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(233, 117, 131, 0.3);
+}
+
+.nav-item.active .nav-icon svg {
+  color: #ffffff;
+}
+
+.nav-item:not(.active) .nav-icon {
+  background: transparent;
+}
+
+.nav-icon svg {
+  width: 28px;
+  height: 28px;
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+3s ease
+.nav-label {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  margin-top: 4px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+color 0.3s ease
+.nav-item.active .nav-label {
+  color: #E97583;
+  font-weight: 600;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 50px;
+  background-color: #3a3a3a;
+  margin: 0 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bottom-navigation {
+    padding: 10px 0;
+  }
+
+  .nav-item {
+    padding: 6px 12px;
+    min-width: 60px;
+  }
+
+  .nav-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .nav-label {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-item {
+    padding: 6px 8px;
+    min-width: 50px;
+  }
+
+  .nav-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .nav-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-label {
+    font-size: 10px;
+  }
+}
