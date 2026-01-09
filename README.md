@@ -1,18 +1,46 @@
 # Threat Guard - Advanced Security Monitoring Platform
 
-**THREAT GUARD** | **SECURITY** | **MONITORING** | **REAL-TIME**
+<div align="center">
 
-> Master Cybersecurity Through Intelligent Threat Detection & Analysis
+[![THREAT GUARD](https://img.shields.io/badge/THREAT-GUARD-darkblue?style=for-the-badge)](https://github.com/piyush-jha-16/Threat-Guard)
+[![SECURITY](https://img.shields.io/badge/SECURITY-MONITORING-orange?style=for-the-badge)](https://github.com/piyush-jha-16/Threat-Guard)
+[![REAL-TIME](https://img.shields.io/badge/REAL-TIME-yellow?style=for-the-badge)](https://github.com/piyush-jha-16/Threat-Guard)
+
+**Master Cybersecurity Through Intelligent Threat Detection & Analysis**
 
 [Live Demo](https://threat-guard.io) | [Report Issue](https://github.com/piyush-jha-16/Threat-Guard/issues) | [Documentation](https://docs.threat-guard.io)
 
 ---
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![React](https://img.shields.io/badge/React-18.0-61DAFB?logo=react)](https://reactjs.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.0-000000?logo=flask)](https://flask.palletsprojects.com/)
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python)](https://www.python.org/)
+[![Security](https://img.shields.io/badge/Security-Enterprise-red)](https://github.com/piyush-jha-16/Threat-Guard)
+
+</div>
+
+---
+
 ## Overview
 
-Threat Guard combines a modern React-based frontend with a powerful Python Flask backend to deliver enterprise-grade security scanning and monitoring. The platform features real-time threat analysis, automated scanning workflows, and an intuitive dashboard for security professionals.
+Threat Guard combines a modern **React-based frontend** with a powerful **Python Flask backend** to deliver enterprise-grade security scanning and monitoring. The platform features real-time threat analysis, automated scanning workflows, and an intuitive dashboard for security professionals.
+
+<div align="center">
+
+| Detection | Monitoring | Security | Performance |
+|:---:|:---:|:---:|:---:|
+| Multi-layered Analysis | Real-time Dashboard | Enterprise-grade | Scalable Architecture |
+
+</div>
+
+---
 
 ## Key Features
+
+<table>
+<tr>
+<td width="50%">
 
 ### Threat Detection & Analysis
 - **Document Scanning**: Deep analysis of file uploads for malware, suspicious patterns, and embedded threats
@@ -20,25 +48,44 @@ Threat Guard combines a modern React-based frontend with a powerful Python Flask
 - **URL Reputation Checking**: Real-time URL scanning against threat intelligence databases
 - **Multi-layered Security**: Integration with multiple scanning engines for comprehensive threat detection
 
+</td>
+<td width="50%">
+
 ### Security Monitoring
 - **Real-time Dashboard**: Live monitoring of security events and threat indicators
 - **Threat Intelligence Feed**: Continuous updates from global threat databases
 - **Historical Analysis**: Track and analyze threat patterns over time
 - **Alert System**: Automated notifications for critical security events
 
+</td>
+</tr>
+<tr>
+<td width="50%">
+
 ### Access Control
 - **Secure Authentication**: User authentication and session management
 - **Role-based Access**: Granular permission controls for different user roles
 - **Audit Logging**: Complete activity tracking for compliance and forensics
+
+</td>
+<td width="50%">
 
 ### Performance & Scalability
 - **Asynchronous Processing**: Queue-based scanning for optimal performance
 - **RESTful API**: Clean, documented API for easy integration
 - **Microservices Architecture**: Scalable design for enterprise deployment
 
+</td>
+</tr>
+</table>
+
+---
+
 ## Architecture
 
-### Frontend (React)
+<details>
+<summary><b>Frontend (React)</b></summary>
+
 ```
 src/
 ├── components/
@@ -53,7 +100,11 @@ src/
 └── index.js                    # Entry point
 ```
 
-### Backend (Python Flask)
+</details>
+
+<details>
+<summary><b>Backend (Python Flask)</b></summary>
+
 ```
 backend/
 ├── app/
@@ -77,16 +128,22 @@ backend/
 └── run.py                      # Application entry point
 ```
 
+</details>
+
+---
+
 ## Getting Started
 
 ### Prerequisites
-- Node.js 16+ and npm
-- Python 3.9+
-- pip (Python package manager)
-- Redis (for task queue)
-- PostgreSQL or MongoDB (for data storage)
+
+```bash
+Node.js 16+  |  Python 3.9+  |  Redis  |  PostgreSQL/MongoDB
+```
 
 ### Frontend Setup
+
+<details>
+<summary>Click to expand</summary>
 
 1. **Install Dependencies**
    ```bash
@@ -109,7 +166,12 @@ backend/
    npm run build
    ```
 
+</details>
+
 ### Backend Setup
+
+<details>
+<summary>Click to expand</summary>
 
 1. **Navigate to Backend Directory**
    ```bash
@@ -143,16 +205,47 @@ backend/
    python run.py
    ```
 
+</details>
+
+---
+
 ## Technologies Used
 
-### Frontend
+<div align="center">
+
+### Frontend Stack
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+
+### Backend Stack
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+
+### DevOps & Tools
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
+</div>
+
+<details>
+<summary><b>Detailed Technology Breakdown</b></summary>
+
+<br>
+
+**Frontend**
 - **React 18** - Modern UI library
 - **Axios** - HTTP client for API communication
 - **React Router** - Client-side routing
 - **CSS3** - Modern styling with animations
 - **Chart.js** - Data visualization
 
-### Backend
+**Backend**
 - **Flask** - Lightweight Python web framework
 - **SQLAlchemy** - Database ORM
 - **Celery** - Distributed task queue
@@ -162,13 +255,22 @@ backend/
 - **YARA** - Pattern matching for malware detection
 - **pefile** - PE file analysis
 
-### DevOps & Deployment
+**DevOps & Deployment**
 - **Docker** - Containerization
 - **nginx** - Reverse proxy
 - **Gunicorn** - WSGI HTTP server
 - **GitHub Actions** - CI/CD pipeline
 
+</details>
+
+---
+
 ## API Endpoints
+
+<details>
+<summary><b>View API Documentation</b></summary>
+
+<br>
 
 ### Scanning
 - `POST /api/scan/document` - Upload and scan documents
@@ -186,7 +288,13 @@ backend/
 - `POST /api/auth/logout` - Session termination
 - `GET /api/auth/profile` - User profile information
 
+</details>
+
+---
+
 ## Security Considerations
+
+> **Enterprise-grade security built-in**
 
 - All file uploads are sandboxed and analyzed in isolated environments
 - Communications between frontend and backend are encrypted (HTTPS/TLS)
@@ -195,24 +303,56 @@ backend/
 - Rate limiting on all API endpoints
 - CORS configuration for secure cross-origin requests
 
+---
+
 ## Performance Metrics
 
-- **Scan Speed**: < 5 seconds for documents up to 50MB
-- **URL Check**: < 2 seconds per URL
-- **Concurrent Scans**: Supports 100+ simultaneous operations
-- **Uptime**: 99.9% availability SLA
+<div align="center">
+
+| Metric | Performance |
+|:---:|:---:|
+| Document Scan Speed | < 5 seconds (up to 50MB) |
+| URL Check Speed | < 2 seconds per URL |
+| Concurrent Scans | 100+ simultaneous |
+| Uptime | 99.9% SLA |
+
+</div>
+
+---
 
 ## Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+Please read our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
 
 ## Support
 
-For issues, questions, or feature requests, please open an issue on GitHub or contact the security team at security@threatguard.io
+<div align="center">
+
+### Need Help?
+
+**Email**: security@threatguard.io  
+**Issues**: [GitHub Issues](https://github.com/piyush-jha-16/Threat-Guard/issues)  
+**Discussions**: [GitHub Discussions](https://github.com/piyush-jha-16/Threat-Guard/discussions)
+
+</div>
+
+---
 
 ## Roadmap
 
@@ -225,4 +365,15 @@ For issues, questions, or feature requests, please open an issue on GitHub or co
 
 ---
 
-**Threat Guard** - Protecting your digital assets, one scan at a time.
+<div align="center">
+
+### Threat Guard
+
+**Protecting your digital assets, one scan at a time.**
+
+Made with care by the Threat Guard Team
+
+[![Star on GitHub](https://img.shields.io/github/stars/piyush-jha-16/Threat-Guard?style=social)](https://github.com/piyush-jha-16/Threat-Guard)
+[![Follow](https://img.shields.io/github/followers/piyush-jha-16?style=social)](https://github.com/piyush-jha-16)
+
+</div>
