@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './BottomNavigation.css';
 
-const BottomNavigation = () => {
-  const [activeTab, setActiveTab] = useState('home');
+const BottomNavigation = ({ activeTab, onTabChange }) => {
 
   const navItems = [
     {
@@ -68,7 +67,7 @@ const BottomNavigation = () => {
         <React.Fragment key={item.id}>
           <button
             className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-            onClick={() => setActiveTab(item.id)}
+            onClick={() => onTabChange(item.id)}
           >
             <div className="nav-icon">
               {item.icon}

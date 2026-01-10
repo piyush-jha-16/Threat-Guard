@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TopNavigation from './components/TopNavigation.jsx';
 import BottomNavigation from './components/BottomNavigation.jsx';
+import Login from './components/Login.jsx';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <div className="content">
+  const [currentView, setCurrentView] = useState('home');
+
+  const renderContent = () => {
+    if (currentView === 'portal') {
+      return <Login />;
+    }
+    
+    return (
+      <>
         <h1>Threat Guard</h1>
         <p>Security Monitoring System</p>
+      </>
+    );
+  };
+
+  return (
+    <div className="App">
+      <TopNavigation />
+      <div className="content">
+        {renderContent()}
       </div>
-      <BottomNavigation />
+      <BottomNavigation activeTab={currentView} onTabChange={setCurrentView} />
     </div>
   );
 }
