@@ -2,7 +2,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #121212;
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
 
 .content {
@@ -11,17 +12,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 90px 20px 20px 20px;
+  padding: 0;
   margin-top: 0;
 }
 
 .content h1 {
   font-size: 2.5rem;
-  color: #E97583;
+  color: var(--accent-color);
   margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
 .content p {
   font-size: 1.2rem;
-  color: #9ca3af;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
