@@ -1,13 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './TopNavigation.css';
 
-const TopNavigation = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
+const TopNavigation = ({ isDarkMode, toggleTheme }) => {
   return (
     <>
       <nav className="top-navigation">
