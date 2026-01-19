@@ -4,14 +4,17 @@
   left: 0;
   right: 0;
   height: 70px;
-  background-color: var(--bg-primary);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
   z-index: 1000;
-  border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid var(--glass-border);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .nav-left {
@@ -24,12 +27,24 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo:hover {
+  transform: scale(1.02);
 }
 
 .brand-icon {
   width: 36px;
   height: 36px;
   object-fit: contain;
+  filter: drop-shadow(0 2px 4px var(--shadow-color));
+  transition: filter 0.3s ease;
+}
+
+.brand-logo:hover .brand-icon {
+  filter: drop-shadow(0 4px 8px var(--accent-glow));
 }
 
 .nav-feature {
@@ -43,17 +58,38 @@
   font-weight: 500;
   padding: 8px 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 0.3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: -0.01em;
   text-decoration: none;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-feature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--accent-glow);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.nav-feature:hover::before {
+  opacity: 1;
 }
 
 .nav-feature:hover {
   color: var(--accent-color);
+  transform: translateY(-1px);
 }
 
 .nav-feature svg {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-feature:hover svg {
@@ -77,16 +113,22 @@
 }
 
 .brand-name {
-  font-family: 'Montserrat', 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, #E97583 0%, #E85D6F 100%);
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #E97583 0%, #F08593 50%, #E85D6F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0;
   text-transform: uppercase;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.brand-name:hover {
+  transform: scale(1.02);
 }
 
 .nav-right {
@@ -102,18 +144,34 @@
   border-radius: 12px;
   padding: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme-toggle:hover {
   border-color: var(--accent-color);
-  box-shadow: 0 0 12px rgba(233, 117, 131, 0.3);
+  box-shadow: 0 4px 16px var(--accent-glow);
   background: var(--bg-secondary);
+  transform: translateY(-2px);
+}
+
+.theme-toggle:hover::before {
+  opacity: 1;
 }
 
 .toggle-icon {
@@ -123,12 +181,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .moon-icon,
 .sun-icon {
   position: absolute;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--text-secondary);
 }
 
@@ -156,6 +215,7 @@
 .theme-toggle:hover .moon-icon,
 .theme-toggle:hover .sun-icon {
   color: var(--accent-color);
+  transform: scale(1.1) !important;
 }
 
 .nav-separator {
@@ -174,11 +234,11 @@
   .brand-name {
     font-size: 1.3rem;
   }
-  
+
   .nav-feature span {
     display: none;
   }
-  
+
   .nav-feature {
     padding: 8px 12px;
   }
@@ -188,23 +248,23 @@
   .top-navigation {
     padding: 0 20px;
   }
-  
+
   .nav-left {
     gap: 0;
   }
-  
+
   .nav-feature {
     padding: 8px 8px;
   }
-  
+
   .nav-divider {
     margin: 0 2px;
   }
-  
+
   .brand-name {
     font-size: 1.1rem;
   }
-  
+
   .nav-separator {
     width: calc(100% - 40px);
   }
@@ -215,15 +275,15 @@
     height: 60px;
     padding: 0 15px;
   }
-  
+
   .nav-separator {
     top: 60px;
   }
-  
+
   .brand-name {
     font-size: 1rem;
   }
-  
+
   .theme-toggle {
     width: 40px;
     height: 40px;
