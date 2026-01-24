@@ -1,7 +1,7 @@
 import React from 'react';
 import './BottomNavigation.css';
 
-const BottomNavigation = ({ activeTab, onTabChange }) => {
+const BottomNavigation = ({ activeTab, onTabChange, isScrolled }) => {
 
   const navItems = [
     {
@@ -62,7 +62,7 @@ const BottomNavigation = ({ activeTab, onTabChange }) => {
   ];
 
   return (
-    <nav className="bottom-navigation">
+    <nav className={`bottom-navigation ${isScrolled ? 'scrolled' : ''}`}>
       {navItems.map((item, index) => (
         <React.Fragment key={item.id}>
           <button
@@ -74,7 +74,7 @@ const BottomNavigation = ({ activeTab, onTabChange }) => {
             </div>
             <span className="nav-label">{item.label}</span>
           </button>
-          {index === 3 && <div className="nav-divider"></div>}
+          {index === 3 && <div className="side-nav-divider"></div>}
         </React.Fragment>
       ))}
     </nav>
