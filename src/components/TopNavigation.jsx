@@ -20,7 +20,7 @@ const TopNavigation = ({ isDarkMode, toggleTheme }) => {
             <span>Github Repository</span>
           </a>
           
-          <div className="nav-divider"></div>
+          <div className="top-nav-divider"></div>
           
           <a href="#documentation" className="nav-feature">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
