@@ -270,7 +270,7 @@ rule Cryptocurrency_Miner
 rule Keylogger_Behavior
 {
     meta:
-        description = "Detects keylogger behavioral patterns"
+        description = "Detects keylogger behavioral patterns" 
         severity = "critical"
         category = "spyware"
         
