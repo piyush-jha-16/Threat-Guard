@@ -1,9 +1,19 @@
+.executables-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 70px);
+}
+
 .executables-section {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
     padding: 32px 24px 80px;
     animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1;
+    /* Pushes footer to bottom */
+    display: flex;
+    flex-direction: column;
 }
 
 .section-header {
@@ -161,6 +171,7 @@
 .info-card li:last-child {
     margin-bottom: 0;
 }
+
 /* Footer Styles */
 .home-footer {
     margin-top: 60px;
@@ -228,6 +239,7 @@
     font-size: 0.875rem;
     user-select: none;
 }
+
 .info-card li::before {
     content: '✓';
     position: absolute;
