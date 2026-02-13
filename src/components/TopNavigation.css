@@ -86,6 +86,7 @@
 .nav-feature:hover {
   color: var(--accent-color);
   transform: translateY(-1px);
+  background: rgba(233, 117, 131, 0.05);
 }
 
 .nav-feature svg {
@@ -132,6 +133,7 @@
 
 .brand-name:hover {
   transform: scale(1.02);
+  text-shadow: 0 0 20px rgba(233, 117, 131, 0.4);
 }
 
 .nav-right {
