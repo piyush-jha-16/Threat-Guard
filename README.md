@@ -1,50 +1,79 @@
 # Threat Guard
 
-A security monitoring platform that combines a React frontend with a Python Flask backend for real-time threat detection and analysis.
+Threat Guard is a comprehensive security monitoring platform designed to identify, analyze, and mitigate digital threats. The application integrates a modern React-based frontend with a robust Python Flask backend to deliver real-time threat detection capabilities.
 
-Threat Guard provides a comprehensive solution for identifying and analyzing security threats through document scanning, URL reputation checking, and real-time monitoring. The application features an intuitive interface built with React, backed by a robust Flask API that handles threat analysis and data processing.
+## Key Features
 
-## File Structure
+- **Dashboard Overview**: Centralized monitoring hub for security events and threat indicators.
+- **Document Analysis**: Automated scanning of uploaded documents for malware signatures and suspicious patterns.
+- **Executable Analysis**: Static and dynamic analysis of executable files to detect malicious behavior.
+- **URL Reputation**: Real-time verification of URLs against threat intelligence databases.
+- **Secure Authentication**: Robust user authentication and session management system.
+- **File Upload Interface**: Streamlined interface for submitting files for security analysis.
+
+## Project Structure
+
+The project is organized as follows:
 
 ```
 Threat-Guard/
-├── public/
-│   └── index.html              # HTML entry point
+├── public/                 # Static assets and entry HTML
 ├── src/
-│   ├── App.jsx                 # Main application component
-│   ├── App.css                 # Application styles
-│   ├── index.jsx               # React entry point
-│   ├── index.css               # Global styles
-│   └── components/
-│       ├── BottomNavigation.jsx    # Navigation component
-│       └── BottomNavigation.css    # Navigation styles
-├── package.json                # Frontend dependencies
-└── README.md                   # Documentation
+│   ├── components/         # React components
+│   │   ├── BottomNavigation.jsx
+│   │   ├── Documents.jsx
+│   │   ├── Executables.jsx
+│   │   ├── FileUpload.jsx
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── TopNavigation.jsx
+│   │   └── URLs.jsx
+│   ├── App.jsx            # Main application layout
+│   ├── index.jsx          # Application entry point
+│   └── *.css              # Component-specific styles
+├── package.json           # Frontend dependencies and scripts
+└── README.md              # Project documentation
 ```
 
-## Features
+## Backend Architecture
 
-- **Document Scanning** - Analyze file uploads for malware and suspicious patterns
-- **URL Reputation Checking** - Real-time URL scanning against threat databases
-- **Real-time Dashboard** - Monitor security events and threat indicators
-- **Secure Authentication** - User authentication and session management
+The backend infrastructure is currently under active development using **Python Flask**. This choice ensures:
 
-## Setup
+- **Scalability**: Efficient handling of concurrent analysis requests.
+- **Extensibility**: Easy integration with various security tools and libraries (e.g., YARA, impurity).
+- **Performance**: Optimized allow/block listing and threat computation.
 
-### Frontend
+*Note: The backend codebase layout and setup instructions will be detailed in future updates.*
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+- Python 3.8+ (for upcoming backend)
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/threat-guard.git
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd Threat-Guard
+    ```
+3.  Install frontend dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+To start the development server:
 
 ```bash
-npm install
 npm start
 ```
 
-### Backend
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python run.py
-```
-
+The application will launch in your default browser at `http://localhost:3000`.
