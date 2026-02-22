@@ -5,8 +5,8 @@
   right: 0;
   height: 70px;
   background-color: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,7 +14,18 @@
   z-index: 1000;
   border-bottom: 1px solid var(--glass-border);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px var(--shadow-color);
+  box-shadow: 0 1px 0 var(--glass-border), 0 4px 24px var(--shadow-color);
+}
+
+.top-navigation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #E97583 30%, #F08593 70%, transparent 100%);
+  opacity: 0.8;
 }
 
 .nav-left {
@@ -86,7 +97,8 @@
 .nav-feature:hover {
   color: var(--accent-color);
   transform: translateY(-1px);
-  background: rgba(233, 117, 131, 0.05);
+  background: rgba(233, 117, 131, 0.08);
+  border: 1px solid rgba(233, 117, 131, 0.12);
 }
 
 .nav-feature svg {
@@ -118,9 +130,9 @@
 
 .brand-name {
   font-family: 'Outfit', 'Inter', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   background: linear-gradient(135deg, #E97583 0%, #F08593 50%, #E85D6F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -145,8 +157,8 @@
 
 .theme-toggle {
   background: var(--bg-tertiary);
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
   padding: 8px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -157,6 +169,7 @@
   height: 44px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 1px 3px var(--shadow-color), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .theme-toggle::before {
