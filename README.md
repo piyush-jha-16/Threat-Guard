@@ -1,79 +1,279 @@
 # Threat Guard
 
-Threat Guard is a comprehensive security monitoring platform designed to identify, analyze, and mitigate digital threats. The application integrates a modern React-based frontend with a robust Python Flask backend to deliver real-time threat detection capabilities.
+Threat Guard is a document security analysis platform that combines a React frontend with a Python Flask backend to scan uploaded documents for threats using rule-based pattern matching.
 
-## Key Features
+---
 
-- **Dashboard Overview**: Centralized monitoring hub for security events and threat indicators.
-- **Document Analysis**: Automated scanning of uploaded documents for malware signatures and suspicious patterns.
-- **Executable Analysis**: Static and dynamic analysis of executable files to detect malicious behavior.
-- **URL Reputation**: Real-time verification of URLs against threat intelligence databases.
-- **Secure Authentication**: Robust user authentication and session management system.
-- **File Upload Interface**: Streamlined interface for submitting files for security analysis.
+## Features
+
+- Document upload and scanning via a drag-and-drop interface
+- Real-time threat detection using a pure-Python rule engine
+- Per-file scan results with matched rule details, severity classification, and file metadata (SHA-256, MD5, entropy)
+- Dark and light theme support
+- Responsive layout with bottom navigation
+
+---
+
+## How the Scanner Works
+
+When a user uploads a document and clicks **Start Scan**, the following process runs:
+
+```
++--------------------------+
+|   User uploads file(s)   |
+|   via the Documents page |
++-----------+--------------+
+            |
+            v
++-----------+--------------+
+|  POST /api/scan          |
+|  Flask receives the file |
+|  as multipart/form-data  |
++-----------+--------------+
+            |
+            v
++-----------+--------------+
+|  File Metadata           |
+|  - Detect file type      |
+|    (magic bytes)         |
+|  - Calculate entropy     |
+|  - Compute SHA-256, MD5  |
++-----------+--------------+
+            |
+            v
++-----------+--------------+
+|  Pattern Matching        |
+|  Run all rules against   |
+|  raw file bytes.         |
+|                          |
+|  Each rule defines:      |
+|  - A list of patterns    |
+|  - A minimum match count |
+|  - A severity level      |
+|  - A category            |
++-----------+--------------+
+            |
+            v
++-----------+--------------+
+|  Heuristic Checks        |
+|  - PE magic bytes in a   |
+|    document extension    |
+|    (e.g. .docx with MZ   |
+|    header) = CRITICAL    |
++-----------+--------------+
+            |
+            v
++-----------+--------------+
+|  Deduplicate matches     |
+|  Compute overall threat  |
+|  level from highest      |
+|  severity match          |
++-----------+--------------+
+            |
+            v
++-----------+--------------+
+|  JSON response returned  |
+|  to the frontend         |
+|                          |
+|  - threat_level          |
+|  - matches[]             |
+|  - summary               |
+|  - file_info             |
++-----------+--------------+
+            |
+            v
++-----------+--------------+
+|  ScanResults component   |
+|  renders threat badge,   |
+|  match cards, and file   |
+|  metadata in the UI      |
++--------------------------+
+```
+
+### Threat Levels
+
+| Level    | Description                                              |
+|----------|----------------------------------------------------------|
+| CLEAN    | No rules matched. File appears safe.                     |
+| LOW      | Minor indicators present. Low confidence of threat.      |
+| MEDIUM   | Moderate indicators such as SQL injection patterns.      |
+| HIGH     | Strong indicators such as phishing text or VBA macros.   |
+| CRITICAL | Definitive threat indicators such as ransomware content. |
+
+### Detection Rules
+
+| Rule                    | Category   | Severity | Trigger Condition                                      |
+|-------------------------|------------|----------|--------------------------------------------------------|
+| Malicious_Macro_Keywords| document   | High     | 3 or more VBA macro keywords found                     |
+| Ransomware_Note_Keywords| ransomware | Critical | 3 or more ransom note keywords found                   |
+| Ransomware_Extensions   | ransomware | Critical | Any ransomware file extension string found             |
+| Phishing_Keywords       | phishing   | High     | Any phishing social-engineering phrase found           |
+| SQL_Injection_Patterns  | injection  | Medium   | 2 or more SQL injection patterns found                 |
+| Embedded_PE_in_Document | document   | Critical | File has PE magic bytes (MZ) with a document extension |
+
+---
 
 ## Project Structure
 
-The project is organized as follows:
-
 ```
 Threat-Guard/
-├── public/                 # Static assets and entry HTML
+├── backend/
+│   ├── app.py              # Flask application, API routes
+│   ├── scanner.py          # Rule-based scanning engine
+│   └── requirements.txt    # Python dependencies
+├── public/
+│   └── index.html
 ├── src/
-│   ├── components/         # React components
+│   ├── components/
 │   │   ├── BottomNavigation.jsx
 │   │   ├── Documents.jsx
 │   │   ├── Executables.jsx
 │   │   ├── FileUpload.jsx
 │   │   ├── Home.jsx
 │   │   ├── Login.jsx
+│   │   ├── ScanResults.jsx
 │   │   ├── TopNavigation.jsx
 │   │   └── URLs.jsx
-│   ├── App.jsx            # Main application layout
-│   ├── index.jsx          # Application entry point
-│   └── *.css              # Component-specific styles
-├── package.json           # Frontend dependencies and scripts
-└── README.md              # Project documentation
+│   ├── App.jsx
+│   ├── index.jsx
+│   └── *.css
+├── package.json
+└── README.md
 ```
 
-## Backend Architecture
+---
 
-The backend infrastructure is currently under active development using **Python Flask**. This choice ensures:
+## API Reference
 
-- **Scalability**: Efficient handling of concurrent analysis requests.
-- **Extensibility**: Easy integration with various security tools and libraries (e.g., YARA, impurity).
-- **Performance**: Optimized allow/block listing and threat computation.
+### `GET /api/health`
+Returns the current status of the backend server.
 
-*Note: The backend codebase layout and setup instructions will be detailed in future updates.*
+**Response**
+```json
+{
+  "status": "ok",
+  "scan_engine": "Python Rules",
+  "max_file_size_mb": 50
+}
+```
+
+---
+
+### `GET /api/rules`
+Returns a list of all loaded detection rules.
+
+**Response**
+```json
+{
+  "engine": "Python Rules",
+  "total_rules": 5,
+  "rules": [
+    {
+      "name": "Malicious_Macro_Keywords",
+      "description": "Detects suspicious VBA macro keywords in documents",
+      "severity": "high",
+      "category": "document"
+    }
+  ]
+}
+```
+
+---
+
+### `POST /api/scan`
+Accepts one or more files and returns scan results for each.
+
+**Request**
+- Content-Type: `multipart/form-data`
+- Field name: `files` (one or more files)
+- Maximum file size: 50 MB
+
+**Response**
+```json
+{
+  "scan_complete": true,
+  "files_scanned": 1,
+  "overall_threat_level": "critical",
+  "results": [
+    {
+      "filename": "document.docx",
+      "threat_level": "critical",
+      "summary": "Detected 2 threat indicator(s): 1 ransomware, 1 phishing.",
+      "matches": [
+        {
+          "rule": "Ransomware_Note_Keywords",
+          "description": "Detects common ransomware ransom note keywords",
+          "severity": "critical",
+          "category": "ransomware",
+          "matched_patterns": ["bitcoin", "decrypt", "private key"]
+        }
+      ],
+      "file_info": {
+        "size": 28672,
+        "type": "ZIP/Office Open XML (DOCX/XLSX/PPTX)",
+        "entropy": 7.812,
+        "sha256": "a3f1...",
+        "md5": "d41d..."
+      },
+      "scan_engine": "Python Rules"
+    }
+  ]
+}
+```
+
+---
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- npm (v6 or higher)
-- Python 3.8+ (for upcoming backend)
+- Node.js v14 or higher
+- Python 3.10 or higher
+- pip
 
 ### Installation
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/threat-guard.git
-    ```
-2.  Navigate to the project directory:
-    ```bash
-    cd Threat-Guard
-    ```
-3.  Install frontend dependencies:
-    ```bash
-    npm install
-    ```
+**1. Clone the repository**
+```bash
+git clone https://github.com/yourusername/threat-guard.git
+cd Threat-Guard
+```
+
+**2. Install frontend dependencies**
+```bash
+npm install
+```
+
+**3. Install backend dependencies**
+```bash
+cd backend
+pip install flask flask-cors
+```
 
 ### Running the Application
 
-To start the development server:
+**Start the backend** (from the `backend/` directory):
+```bash
+python app.py
+```
+The API will be available at `http://localhost:5000`.
 
+**Start the frontend** (from the project root):
 ```bash
 npm start
 ```
+The application will open at `http://localhost:3000`.
 
-The application will launch in your default browser at `http://localhost:3000`.
+Both servers must be running simultaneously for the scan functionality to work.
+
+---
+
+## Technology Stack
+
+| Layer    | Technology          |
+|----------|---------------------|
+| Frontend | React 18, CSS       |
+| Routing  | React Router DOM    |
+| Backend  | Python 3, Flask     |
+| CORS     | Flask-CORS          |
+| Scanning | Pure-Python rules   |
