@@ -2,10 +2,10 @@
 
 <div align="center">
 
-![React](https://img.shields.io/badge/REACT-18-555555?style=flat-square&labelColor=222222)
+![React](https://img.shields.io/badge/REACT-18-d4a017?style=flat-square&labelColor=222222)
 ![Flask](https://img.shields.io/badge/FLASK-3.0-d4a017?style=flat-square&labelColor=222222)
-![Python](https://img.shields.io/badge/PYTHON-3.10+-555555?style=flat-square&labelColor=222222)
-![License](https://img.shields.io/badge/LICENSE-MIT-555555?style=flat-square&labelColor=222222)
+![Python](https://img.shields.io/badge/PYTHON-3.10+-d4a017?style=flat-square&labelColor=222222)
+![License](https://img.shields.io/badge/LICENSE-MIT-d4a017?style=flat-square&labelColor=222222)
 
 **Document Security Analysis Platform with Rule-Based Threat Detection**
 
