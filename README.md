@@ -1,4 +1,4 @@
-# Threat Guard
+# Threat Guard: Files & URL Security Analysis Platform
 
 <div align="center">
 
