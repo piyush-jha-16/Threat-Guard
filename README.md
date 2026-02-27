@@ -1,6 +1,21 @@
 # Threat Guard
 
-Threat Guard is a document security analysis platform that combines a React frontend with a Python Flask backend to scan uploaded documents for threats using rule-based pattern matching.
+<div align="center">
+
+![React](https://img.shields.io/badge/REACT-18-555555?style=flat-square&labelColor=222222)
+![Flask](https://img.shields.io/badge/FLASK-3.0-d4a017?style=flat-square&labelColor=222222)
+![Python](https://img.shields.io/badge/PYTHON-3.10+-555555?style=flat-square&labelColor=222222)
+![License](https://img.shields.io/badge/LICENSE-MIT-555555?style=flat-square&labelColor=222222)
+
+**Document Security Analysis Platform with Rule-Based Threat Detection**
+
+[View Project](#getting-started) · [API Reference](#api-reference) · [Report Bug](https://github.com/piyush-jha-16/Threat-Guard/issues)
+
+</div>
+
+---
+
+Threat Guard combines a React frontend with a Python Flask backend to scan uploaded documents for threats using rule-based pattern matching.
 
 ---
 
@@ -276,4 +291,4 @@ Both servers must be running simultaneously for the scan functionality to work.
 | Routing  | React Router DOM    |
 | Backend  | Python 3, Flask     |
 | CORS     | Flask-CORS          |
-| Scanning | Pure-Python rules   |
+| Scanning | Python rules        |
