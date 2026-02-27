@@ -140,6 +140,39 @@
     transform: translateY(-2px);
 }
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.scan-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.scan-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--accent-glow);
+}
+
+.scan-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
 .file-item {
     display: flex;
     align-items: center;

@@ -74,6 +74,10 @@ const Home = () => {
         <div className="home-section">
             <header className="hero-section">
                 <div className="hero-content">
+                    <div className="hero-badge">
+                        <span className="hero-badge-dot"></span>
+                        <span>Trusted Security Platform</span>
+                    </div>
                     <h1 className="hero-title">Enterprise-Grade Security Analysis</h1>
                     <p className="hero-description">
                         Comprehensive threat detection and analysis platform for modern security operations.
@@ -84,10 +88,12 @@ const Home = () => {
                             <span className="stat-number">90%</span>
                             <span className="stat-label">Threat Detection Rate</span>
                         </div>
+                        <div className="stat-divider"></div>
                         <div className="stat-item">
                             <span className="stat-number">&lt;5s</span>
                             <span className="stat-label">Average Scan Time</span>
                         </div>
+                        <div className="stat-divider"></div>
                         <div className="stat-item">
                             <span className="stat-number">Secure</span>
                             <span className="stat-label">Scanning is done safely</span>
@@ -96,7 +102,7 @@ const Home = () => {
                 </div>
                 <div className="scroll-indicator">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </div>
             </header>
