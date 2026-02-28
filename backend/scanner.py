@@ -18,9 +18,6 @@ SEVERITY_COLORS = {
     "critical": "darkred",
 }
 
-# ─── Pure-Python rule definitions ────────────────────────────────────────────
-# Each rule is a dict with: name, description, severity, category, patterns (list of bytes/str)
-# condition: number of patterns that must match (default 1 = any)
 
 PYTHON_RULES = [
     # --- VBA Macros ---
