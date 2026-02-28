@@ -1,5 +1,6 @@
+<div align="center">
 # Threat Guard: Files & URL Security Analysis Platform
-
+</div>
 <div align="center">
 
 ![React](https://img.shields.io/badge/REACT-18-d4a017?style=flat-square&labelColor=222222)

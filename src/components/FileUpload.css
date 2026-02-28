@@ -162,15 +162,63 @@
     box-shadow: 0 4px 12px var(--accent-glow);
 }
 
-.scan-btn:hover {
+.scan-btn:hover:not(:disabled) {
     background: var(--accent-hover);
     transform: translateY(-2px);
     box-shadow: 0 6px 16px var(--accent-glow);
 }
 
+.scan-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
+}
+
 .scan-btn svg {
     width: 18px;
     height: 18px;
+}
+
+.scan-btn.scanning {
+    background: var(--accent-hover);
+}
+
+/* Spinner */
+.scan-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error banner */
+.scan-error-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #f87171;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.scan-error-banner svg {
+    flex-shrink: 0;
+    margin-top: 1px;
 }
 
 .file-item {

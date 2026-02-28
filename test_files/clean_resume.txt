@@ -1,0 +1,33 @@
+CURRICULUM VITAE
+================
+
+Name: Piyush Jha
+Email: piyush@example.com
+Phone: +91-XXXXXXXXXX
+
+EDUCATION
+---------
+B.Tech in Computer Science
+XYZ University, 2022–2026
+
+SKILLS
+------
+- React, JavaScript, HTML/CSS
+- Python, Flask
+- Git & Version Control
+- Problem Solving
+
+PROJECTS
+--------
+1. Threat Guard – A document security analysis web app
+2. Portfolio Website – Personal showcase site
+
+EXPERIENCE
+----------
+Software Intern at ABC Corp (Summer 2025)
+- Developed REST APIs using Python Flask
+- Collaborated with front-end team on React components
+
+HOBBIES
+-------
+Reading, Photography, Open Source Contributions

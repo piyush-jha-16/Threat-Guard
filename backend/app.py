@@ -1,8 +1,3 @@
-"""
-app.py - Threat Guard Flask Backend
-Provides REST API endpoints for file scanning using YARA/rule-based detection.
-"""
-
 import os
 import traceback
 from flask import Flask, request, jsonify

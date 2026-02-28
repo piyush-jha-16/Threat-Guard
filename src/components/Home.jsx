@@ -78,10 +78,10 @@ const Home = () => {
                         <span className="hero-badge-dot"></span>
                         <span>Trusted Security Platform</span>
                     </div>
-                    <h1 className="hero-title">Enterprise-Grade Security Analysis</h1>
+                    <h1 className="hero-title">File & URL Threat Scanner</h1>
                     <p className="hero-description">
-                        Comprehensive threat detection and analysis platform for modern security operations.
-                        Protect your organization with advanced scanning capabilities and real-time monitoring.
+                        A simple tool to scan files and URLs for potential threats.
+                        Upload a file or paste a URL to instantly check for malware and suspicious content.
                     </p>
                     <div className="hero-stats">
                         <div className="stat-item">

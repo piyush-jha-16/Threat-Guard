@@ -1,0 +1,28 @@
+!!! YOUR FILES HAVE BEEN ENCRYPTED !!!
+=======================================
+
+All your important documents, photos, and databases have been
+encrypted with military-grade AES-256 encryption.
+
+To recover your files, you must:
+
+1. Purchase Bitcoin worth $800 USD
+2. Send payment to the following wallet address:
+   1A2B3C4D5E6F7G8H9I0J
+
+3. After payment, email us your unique ID:
+   ID-7X9K2M-DECRYPT
+
+DEADLINE: You have 72 hours to pay. After the deadline,
+your unique private key will be permanently deleted and
+your files will be UNRECOVERABLE.
+
+DO NOT:
+- Contact the police
+- Try to decrypt files yourself
+- Shut down your computer
+
+Files affected: 14,823 files encrypted
+Extensions renamed to: .locked
+
+Time remaining: 71:58:43
