@@ -125,6 +125,10 @@ When a user uploads a document and clicks **Start Scan**, the following process 
 | Ransomware_Extensions   | ransomware | Critical | Any ransomware file extension string found             |
 | Phishing_Keywords       | phishing   | High     | Any phishing social-engineering phrase found           |
 | SQL_Injection_Patterns  | injection  | Medium   | 2 or more SQL injection patterns found                 |
+| Suspicious_PDF_Characteristics | document | Medium | 2 or more suspicious PDF characteristics found |
+| Suspicious_PowerShell_Execution | document | High | 2 or more PowerShell execution keywords found |
+| Suspicious_OLE_Objects | document | Medium | 2 or more suspicious OLE object keywords found |
+| Credential_Theft_Keywords | phishing | High | 3 or more credential theft keywords found |
 | Embedded_PE_in_Document | document   | Critical | File has PE magic bytes (MZ) with a document extension |
 
 ---
@@ -182,7 +186,7 @@ Returns a list of all loaded detection rules.
 ```json
 {
   "engine": "Python Rules",
-  "total_rules": 5,
+  "total_rules": 9,
   "rules": [
     {
       "name": "Malicious_Macro_Keywords",

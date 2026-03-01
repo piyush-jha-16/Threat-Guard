@@ -85,6 +85,55 @@ PYTHON_RULES = [
         "condition": 2,
         "case_insensitive": True,
     },
+    # --- PDF Threats ---
+    {
+        "name": "Suspicious_PDF_Characteristics",
+        "description": "Detects suspicious PDF capabilities like JavaScript or automatic action launches",
+        "severity": "medium",
+        "category": "document",
+        "patterns": [
+            b"/javascript", b"/js", b"/openqaaction", b"/launch", b"/embeddedfiles"
+        ],
+        "condition": 2,
+        "case_insensitive": True,
+    },
+    # --- Execution/PowerShell ---
+    {
+        "name": "Suspicious_PowerShell_Execution",
+        "description": "Detects embedded PowerShell execution commands typical in malicious documents",
+        "severity": "high",
+        "category": "document",
+        "patterns": [
+            b"powershell", b"-executionpolicy bypass", b"hidden", 
+            b"start-process", b"invoke-expression", b"syswow64"
+        ],
+        "condition": 2,
+        "case_insensitive": True,
+    },
+    # --- OLE Objects ---
+    {
+        "name": "Suspicious_OLE_Objects",
+        "description": "Detects potentially malicious embedded OLE objects in Office documents",
+        "severity": "medium",
+        "category": "document",
+        "patterns": [
+            b"ole10native", b"equation.3", b"objdata", b"mshta.exe"
+        ],
+        "condition": 2,
+        "case_insensitive": True,
+    },
+    # --- Credential Theft ---
+    {
+        "name": "Credential_Theft_Keywords",
+        "description": "Detects keywords related to credential theft usually found in phishing documents",
+        "severity": "high",
+        "category": "phishing",
+        "patterns": [
+            b"password", b"login", b"credentials", b"private key", b"auth_token"
+        ],
+        "condition": 3,
+        "case_insensitive": True,
+    },
 ]
 
 # ─── Magic bytes for file type detection ─────────────────────────────────────
