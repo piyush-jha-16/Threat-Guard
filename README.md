@@ -125,11 +125,6 @@ When a user uploads a document and clicks **Start Scan**, the following process 
 | Ransomware_Extensions   | ransomware | Critical | Any ransomware file extension string found             |
 | Phishing_Keywords       | phishing   | High     | Any phishing social-engineering phrase found           |
 | SQL_Injection_Patterns  | injection  | Medium   | 2 or more SQL injection patterns found                 |
-| Suspicious_PDF_Characteristics | document | Medium | 2 or more suspicious PDF characteristics found |
-| Suspicious_PowerShell_Execution | document | High | 2 or more PowerShell execution keywords found |
-| Suspicious_OLE_Objects | document | Medium | 2 or more suspicious OLE object keywords found |
-| Credential_Theft_Keywords | phishing | High | 3 or more credential theft keywords found |
-| Embedded_PE_in_Document | document   | Critical | File has PE magic bytes (MZ) with a document extension |
 
 ---
 
@@ -159,86 +154,6 @@ Threat-Guard/
 │   └── *.css
 ├── package.json
 └── README.md
-```
-
----
-
-## API Reference
-
-### `GET /api/health`
-Returns the current status of the backend server.
-
-**Response**
-```json
-{
-  "status": "ok",
-  "scan_engine": "Python Rules",
-  "max_file_size_mb": 50
-}
-```
-
----
-
-### `GET /api/rules`
-Returns a list of all loaded detection rules.
-
-**Response**
-```json
-{
-  "engine": "Python Rules",
-  "total_rules": 9,
-  "rules": [
-    {
-      "name": "Malicious_Macro_Keywords",
-      "description": "Detects suspicious VBA macro keywords in documents",
-      "severity": "high",
-      "category": "document"
-    }
-  ]
-}
-```
-
----
-
-### `POST /api/scan`
-Accepts one or more files and returns scan results for each.
-
-**Request**
-- Content-Type: `multipart/form-data`
-- Field name: `files` (one or more files)
-- Maximum file size: 50 MB
-
-**Response**
-```json
-{
-  "scan_complete": true,
-  "files_scanned": 1,
-  "overall_threat_level": "critical",
-  "results": [
-    {
-      "filename": "document.docx",
-      "threat_level": "critical",
-      "summary": "Detected 2 threat indicator(s): 1 ransomware, 1 phishing.",
-      "matches": [
-        {
-          "rule": "Ransomware_Note_Keywords",
-          "description": "Detects common ransomware ransom note keywords",
-          "severity": "critical",
-          "category": "ransomware",
-          "matched_patterns": ["bitcoin", "decrypt", "private key"]
-        }
-      ],
-      "file_info": {
-        "size": 28672,
-        "type": "ZIP/Office Open XML (DOCX/XLSX/PPTX)",
-        "entropy": 7.812,
-        "sha256": "a3f1...",
-        "md5": "d41d..."
-      },
-      "scan_engine": "Python Rules"
-    }
-  ]
-}
 ```
 
 ---
