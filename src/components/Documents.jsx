@@ -37,11 +37,8 @@ const Documents = () => {
                     <div className="format-tags">
                         <span className="format-tag">PDF</span>
                         <span className="format-tag">DOC/DOCX</span>
-                        <span className="format-tag">XLS/XLSX</span>
-                        <span className="format-tag">PPT/PPTX</span>
                         <span className="format-tag">TXT</span>
-                        <span className="format-tag">RTF</span>
-                        <span className="format-tag">ODT</span>
+
                     </div>
                 </div>
 
@@ -67,11 +64,7 @@ const Documents = () => {
                 <div className="footer-content">
                     <p>&copy; 2026 Threat Guard. All rights reserved.</p>
                     <div className="footer-links">
-                        <a href="#privacy">Privacy Policy</a>
-                        <span className="footer-divider">•</span>
-                        <a href="#terms">Terms of Service</a>
-                        <span className="footer-divider">•</span>
-                        <a href="#contact">Contact</a>
+                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', fontWeight: '500' }}>A College Project</span>
                     </div>
                 </div>
             </footer>

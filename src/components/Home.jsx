@@ -125,11 +125,7 @@ const Home = () => {
                 <div className="footer-content">
                     <p>&copy; 2026 Threat Guard. All rights reserved.</p>
                     <div className="footer-links">
-                        <a href="#privacy">Privacy Policy</a>
-                        <span className="footer-divider">•</span>
-                        <a href="#terms">Terms of Service</a>
-                        <span className="footer-divider">•</span>
-                        <a href="#contact">Contact</a>
+                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', fontWeight: '500' }}>Rule Based Detection</span>
                     </div>
                 </div>
             </footer>
