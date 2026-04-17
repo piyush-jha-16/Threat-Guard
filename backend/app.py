@@ -3,6 +3,9 @@ import traceback
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from scanner import scan_file
+from url_scanner import scan_url
+
+YARA_AVAILABLE = False
 
 app = Flask(__name__)
 
@@ -95,6 +98,24 @@ def scan():
         "overall_threat_level": overall_level,
         "results": results,
     })
+
+
+# ─── URL scan endpoint ──────────────────────────────────────────────────────
+
+@app.route("/api/scan-url", methods=["POST"])
+def scan_url_endpoint():
+    payload = request.get_json(silent=True) or {}
+    raw_url = (payload.get("url") or request.form.get("url") or "").strip()
+
+    if not raw_url:
+        return jsonify({"error": "No URL provided."}), 400
+
+    try:
+        result = scan_url(raw_url)
+        return jsonify(result)
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": f"URL scan failed: {str(e)}"}), 500
 
 
 # ─── Error handlers ───────────────────────────────────────────────────────────
