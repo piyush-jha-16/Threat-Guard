@@ -6,6 +6,7 @@ import Home from './components/Home.jsx';
 import Documents from './components/Documents.jsx';
 import Executables from './components/Executables.jsx';
 import URLs from './components/URLs.jsx';
+import Documentation from './components/Documentation.jsx';
 import './App.css';
 
 function App() {
@@ -42,6 +43,14 @@ function App() {
     setIsDarkMode(!isDarkMode);
   };
 
+  const handleTopNavigation = (targetView) => {
+    setCurrentView(targetView);
+    const contentElement = document.querySelector('.content');
+    if (contentElement) {
+      contentElement.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const renderContent = () => {
     switch (currentView) {
       case 'home':
@@ -54,6 +63,8 @@ function App() {
         return <URLs />;
       case 'portal':
         return <Login />;
+      case 'documentation':
+        return <Documentation />;
       default:
         return <Home />;
     }
@@ -61,7 +72,12 @@ function App() {
 
   return (
     <div className="App">
-      <TopNavigation isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+      <TopNavigation
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+        onNavigate={handleTopNavigation}
+        activeView={currentView}
+      />
       <div className="content">
         {renderContent()}
       </div>
