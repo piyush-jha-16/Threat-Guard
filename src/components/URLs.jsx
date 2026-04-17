@@ -1,32 +1,78 @@
 import React, { useState } from 'react';
 import './URLs.css';
 
-const URLs = () => {
-    const [urls, setUrls] = useState([]);
-    const [inputValue, setInputValue] = useState('');
+const BACKEND_URL = 'http://localhost:5000';
 
-    const handleSubmit = (e) => {
+const THREAT_LABELS = {
+    clean: 'Clean',
+    low: 'Low',
+    medium: 'Medium',
+    high: 'High',
+    critical: 'Critical',
+};
+
+const URLs = () => {
+    const [inputValue, setInputValue] = useState('');
+    const [scans, setScans] = useState([]);
+    const [scanState, setScanState] = useState('idle');
+    const [scanError, setScanError] = useState(null);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (inputValue.trim()) {
-            // Basic URL validation
-            try {
-                const url = new URL(inputValue.trim());
-                setUrls(prev => [...prev, { url: url.href, timestamp: new Date() }]);
-                setInputValue('');
-            } catch (error) {
-                // If URL is invalid, still add it (user might want to check)
-                setUrls(prev => [...prev, { url: inputValue.trim(), timestamp: new Date() }]);
-                setInputValue('');
+        const url = inputValue.trim();
+        if (!url) {
+            return;
+        }
+
+        setScanState('scanning');
+        setScanError(null);
+
+        try {
+            const response = await fetch(`${BACKEND_URL}/api/scan-url`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url }),
+            });
+
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                throw new Error(errData.error || `Server error: ${response.status}`);
             }
+
+            const data = await response.json();
+            setScans(prev => [{ ...data, scanned_at: new Date().toISOString() }, ...prev]);
+            setInputValue('');
+            setScanState('done');
+        } catch (error) {
+            console.error('[URLs] Scan error:', error);
+            setScanState('error');
+            setScanError(
+                error.message.includes('fetch') || error.message.includes('Failed')
+                    ? 'Cannot reach backend. Make sure the Flask server is running on port 5000.'
+                    : error.message
+            );
         }
     };
 
-    const removeUrl = (index) => {
-        setUrls(prev => prev.filter((_, i) => i !== index));
+    const removeScan = (index) => {
+        setScans(prev => prev.filter((_, i) => i !== index));
     };
 
-    const formatTimestamp = (date) => {
-        return date.toLocaleTimeString();
+    const clearAll = () => {
+        setScans([]);
+        setScanState('idle');
+        setScanError(null);
+    };
+
+    const formatTimestamp = (value) => {
+        const date = new Date(value);
+        return date.toLocaleString();
+    };
+
+    const getThreatClass = (level) => {
+        return `threat-badge ${level || 'clean'}`;
     };
 
     return (
@@ -59,11 +105,11 @@ const URLs = () => {
                                 type="text"
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
-                                placeholder="Enter URL to scan (e.g., https://example.com)"
+                                placeholder="Enter URL to scan, for example https://example.com/login"
                                 className="url-input"
                             />
                             <button type="submit" className="submit-btn">
-                                <span>Scan</span>
+                                <span>{scanState === 'scanning' ? 'Scanning…' : 'Scan URL'}</span>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -73,27 +119,44 @@ const URLs = () => {
                     </form>
                 </div>
 
-                {urls.length > 0 && (
+                {scanError && (
+                    <div className="scan-error-banner url-error">
+                        {scanError}
+                    </div>
+                )}
+
+                {scans.length > 0 && (
                     <div className="urls-list">
                         <div className="urls-header">
-                            <h4>Submitted URLs ({urls.length})</h4>
-                            <button className="clear-all-btn" onClick={() => setUrls([])}>
+                            <h4>Scan History ({scans.length})</h4>
+                            <button className="clear-all-btn" onClick={clearAll}>
                                 Clear All
                             </button>
                         </div>
-                        {urls.map((item, index) => (
-                            <div key={index} className="url-item">
-                                <div className="url-icon">
+                        {scans.map((item, index) => (
+                            <div key={index} className={`url-item threat-${item.threat_level || 'clean'}`}>
+                                <div className="url-icon threat-icon">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
                                         <path d="M2 12H22" stroke="currentColor" strokeWidth="2" />
                                     </svg>
                                 </div>
-                                <div className="url-info">
-                                    <span className="url-text">{item.url}</span>
-                                    <span className="url-time">Added at {formatTimestamp(item.timestamp)}</span>
+                                <div className="url-info url-result-info">
+                                    <span className="url-text">{item.normalized_url || item.url}</span>
+                                    <span className={getThreatClass(item.threat_level)}>{THREAT_LABELS[item.threat_level] || 'Unknown'}</span>
+                                    <span className="url-time">Scanned at {formatTimestamp(item.scanned_at)}</span>
+                                    <span className="url-summary">{item.summary}</span>
+                                    {item.matches?.length > 0 && (
+                                        <div className="url-match-tags">
+                                            {item.matches.map((match) => (
+                                                <span key={match.rule} className="url-match-tag">
+                                                    {match.rule}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
-                                <button className="remove-btn" onClick={() => removeUrl(index)}>
+                                <button className="remove-btn" onClick={() => removeScan(index)}>
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                         <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

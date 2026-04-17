@@ -101,6 +101,13 @@
   border: 1px solid rgba(233, 117, 131, 0.12);
 }
 
+.nav-feature.active {
+  color: var(--accent-color);
+  background: rgba(233, 117, 131, 0.12);
+  border: 1px solid rgba(233, 117, 131, 0.22);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
 .nav-feature svg {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

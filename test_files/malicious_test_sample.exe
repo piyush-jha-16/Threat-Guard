@@ -1,0 +1,5 @@
+MZ
+This is a harmless local scanner test sample.
+It is not a real executable and should only be used to test detection logic.
+mimikatz meterpreter powershell -enc urlmon wininet cmd.exe wscript.exe
+vssadmin delete shadows bcdedit /set schtasks /create

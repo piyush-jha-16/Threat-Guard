@@ -221,6 +221,10 @@
     min-width: 0;
 }
 
+.url-result-info {
+    gap: 6px;
+}
+
 .url-text {
     font-size: 0.9375rem;
     font-weight: 500;
@@ -229,6 +233,105 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.threat-badge {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.threat-badge.clean {
+    background: rgba(34, 197, 94, 0.12);
+    color: #22c55e;
+}
+
+.threat-badge.low {
+    background: rgba(234, 179, 8, 0.14);
+    color: #eab308;
+}
+
+.threat-badge.medium {
+    background: rgba(249, 115, 22, 0.14);
+    color: #f97316;
+}
+
+.threat-badge.high {
+    background: rgba(239, 68, 68, 0.14);
+    color: #ef4444;
+}
+
+.threat-badge.critical {
+    background: rgba(153, 27, 27, 0.18);
+    color: #f87171;
+}
+
+.url-summary {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.url-match-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.url-match-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.scan-error-banner.url-error {
+    margin-bottom: 20px;
+}
+
+.scan-error-banner.url-error {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    background: rgba(239, 68, 68, 0.08);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
+.threat-critical {
+    border-color: rgba(248, 113, 113, 0.35);
+}
+
+.threat-high {
+    border-color: rgba(239, 68, 68, 0.25);
+}
+
+.threat-medium {
+    border-color: rgba(249, 115, 22, 0.22);
+}
+
+.threat-low {
+    border-color: rgba(234, 179, 8, 0.18);
+}
+
+.threat-clean {
+    border-color: var(--border-color);
 }
 
 .url-time {
