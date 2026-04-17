@@ -20,6 +20,32 @@ SEVERITY_COLORS = {
 
 
 PYTHON_RULES = [
+    # --- Executable Malware (PE) ---
+    {
+        "name": "Executable_Malware_Keywords",
+        "description": "Detects suspicious malware-related strings commonly found inside PE executables",
+        "severity": "critical",
+        "category": "executable",
+        "patterns": [
+            b"mimikatz", b"meterpreter", b"rundll32", b"regsvr32",
+            b"vssadmin delete shadows", b"bcdedit /set", b"schtasks /create",
+            b"disabletaskmgr", b"software\\microsoft\\windows\\currentversion\\run"
+        ],
+        "condition": 2,
+        "case_insensitive": True,
+    },
+    {
+        "name": "Executable_Download_And_Execute",
+        "description": "Detects download-and-execute behavior markers in executables",
+        "severity": "high",
+        "category": "executable",
+        "patterns": [
+            b"urlmon", b"wininet", b"internetopen", b"internetreadfile",
+            b"urldownloadtofile", b"powershell -enc", b"invoke-webrequest"
+        ],
+        "condition": 2,
+        "case_insensitive": True,
+    },
     # --- VBA Macros ---
     {
         "name": "Malicious_Macro_Keywords",
@@ -188,7 +214,7 @@ def _md5(data: bytes) -> str:
 
 def _python_scan(data: bytes) -> list[dict]:
     """Run all Python-based rules against raw file bytes."""
-    matches = []
+    matches = [] 
     data_lower = data.lower()
 
     for rule in PYTHON_RULES:
@@ -224,6 +250,7 @@ def _heuristic_checks(data: bytes, filename: str, entropy: float) -> list[dict]:
     """Heuristic check: flag executables disguised as documents."""
     checks = []
     ext = os.path.splitext(filename)[1].lower()
+    exe_exts = {".exe", ".dll", ".scr", ".com", ".sys", ".bat", ".cmd", ".ps1"}
 
     # Executable disguised as a document
     doc_exts = {".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".rtf", ".odt", ".txt"}
@@ -235,6 +262,30 @@ def _heuristic_checks(data: bytes, filename: str, entropy: float) -> list[dict]:
             "category": "document",
             "matched_patterns": [f"Extension: {ext}", "Magic bytes: MZ (PE executable)"],
         })
+
+    # Packed/obfuscated executable behavior signal
+    if _is_pe(data) and (ext in exe_exts or ext == "") and entropy >= 7.2:
+        checks.append({
+            "rule": "High_Entropy_Executable",
+            "description": "Executable has very high entropy, indicating potential packing/obfuscation",
+            "severity": "high",
+            "category": "executable",
+            "matched_patterns": [f"Entropy: {entropy}", f"Extension: {ext or '(none)'}"],
+        })
+
+    # LOLBin/script-host abuse markers in binaries
+    if _is_pe(data):
+        pe_lower = data.lower()
+        host_markers = [b"cmd.exe", b"powershell", b"wscript.exe", b"mshta.exe"]
+        found_hosts = [m.decode("utf-8", errors="replace") for m in host_markers if m in pe_lower]
+        if len(found_hosts) >= 2:
+            checks.append({
+                "rule": "Executable_ScriptHost_Abuse",
+                "description": "Executable references multiple script/process hosts often abused by malware",
+                "severity": "high",
+                "category": "executable",
+                "matched_patterns": found_hosts,
+            })
 
     return checks
 
