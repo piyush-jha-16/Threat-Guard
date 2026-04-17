@@ -1,0 +1,28 @@
+Threat Guard URL Test Links (Safe -> Critical)
+
+Note:
+- These are synthetic/local testing URLs.
+- They are for scanner validation only.
+
+[CLEAN]
+https://example.com
+https://www.microsoft.com
+https://docs.python.org/3/
+
+[LOW]
+https://example.com/very/long/path/for/testing/url/length/check/that/looks/normal/but/is/intentionally/extended/for/threat-guard/low/severity/signal/only
+
+[MEDIUM]
+https://example.com/login?redirect=https://safe.example.org
+https://example.com/path?next=/dashboard
+http://203.0.113.10/status
+
+[HIGH]
+http://user:pass@192.168.1.10/update
+https://secure-login-example.xyz/verify/account
+https://example.com/account/verify/password/update
+
+[CRITICAL]
+javascript:alert(1)
+data:text/html,<h1>test</h1>
+file:///C:/Windows/System32/calc.exe
