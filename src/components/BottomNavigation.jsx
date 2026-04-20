@@ -66,9 +66,11 @@ const BottomNavigation = ({ activeTab, onTabChange, isScrolled }) => {
       {navItems.map((item, index) => (
         <React.Fragment key={item.id}>
           <button
+            type="button"
             className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
             onClick={() => onTabChange(item.id)}
             data-label={item.label}
+            aria-current={activeTab === item.id ? 'page' : undefined}
           >
             <div className="nav-icon">
               {item.icon}

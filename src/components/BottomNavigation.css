@@ -19,6 +19,10 @@
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.bottom-navigation.scrolled {
+  box-shadow: 0 12px 36px var(--shadow-elevated), 0 2px 8px var(--shadow-color), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
 
 
 .nav-item {
@@ -37,6 +41,11 @@
   border-radius: 16px;
   position: relative;
   overflow: visible;
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
 }
 
 /* Tooltip */
@@ -89,6 +98,10 @@
 
 .nav-item.active {
   color: var(--accent-color);
+}
+
+.nav-item.active::before {
+  opacity: 1;
 }
 
 .nav-icon {

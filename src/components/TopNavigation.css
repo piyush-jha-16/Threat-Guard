@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 32px;
   z-index: 1000;
   border-bottom: 1px solid var(--glass-border);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -38,12 +38,25 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  appearance: none;
 }
 
 .brand-logo:hover {
   transform: scale(1.02);
+}
+
+.brand-logo:focus-visible,
+.nav-feature:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
 }
 
 .brand-icon {
@@ -96,9 +109,9 @@
 
 .nav-feature:hover {
   color: var(--accent-color);
-  transform: translateY(-1px);
-  background: rgba(233, 117, 131, 0.08);
-  border: 1px solid rgba(233, 117, 131, 0.12);
+  transform: translateY(-1px) scale(1.01);
+  background: rgba(233, 117, 131, 0.1);
+  border: 1px solid rgba(233, 117, 131, 0.16);
 }
 
 .nav-feature.active {
@@ -130,7 +143,7 @@
 .nav-center {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 10px;
   flex: 1;
   justify-content: center;
 }
@@ -264,7 +277,7 @@
 
 @media (max-width: 768px) {
   .top-navigation {
-    padding: 0 20px;
+    padding: 0 18px;
   }
 
   .nav-left {
