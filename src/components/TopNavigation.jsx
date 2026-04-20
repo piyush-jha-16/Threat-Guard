@@ -6,10 +6,10 @@ const TopNavigation = ({ isDarkMode, toggleTheme, onNavigate, activeView }) => {
     <>
       <nav className="top-navigation">
         <div className="nav-left">
-          <div className="brand-logo" onClick={() => onNavigate?.('home')}>
+          <button type="button" className="brand-logo" onClick={() => onNavigate?.('home')} aria-label="Go to home page">
             <img src="/favicon.png" alt="Threat Guard" className="brand-icon" />
-            <h1 className="brand-name">Threat Guard</h1>
-          </div>
+            <span className="brand-name">Threat Guard</span>
+          </button>
         </div>
 
         <div className="nav-center">

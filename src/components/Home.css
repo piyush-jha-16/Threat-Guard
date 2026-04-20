@@ -11,7 +11,7 @@
 
 .hero-section {
     text-align: center;
-    padding: 0;
+    padding: 12px 0 0;
     border-bottom: none;
     margin-bottom: 0;
     min-height: calc(100vh - 70px);
@@ -96,10 +96,10 @@
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    padding: 24px 40px;
+    padding: 22px 36px;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 4px 16px var(--shadow-color);
+    box-shadow: 0 6px 20px var(--shadow-color);
     margin-top: 8px;
 }
 
@@ -141,6 +141,7 @@
     color: var(--text-tertiary);
     animation: bounce 2s infinite;
     cursor: pointer;
+    opacity: 0.85;
 }
 
 .scroll-indicator svg {
@@ -257,8 +258,7 @@
     flex-direction: column;
     gap: 20px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px var(--shadow-color);
-    /* Staggered animation setup */
+    box-shadow: 0 6px 20px var(--shadow-color);
     opacity: 0;
     animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -376,6 +376,12 @@
 
 .footer-links a:hover {
     color: var(--accent-color);
+}
+
+.footer-links a:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 .footer-links a:hover::after {

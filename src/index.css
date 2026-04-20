@@ -42,6 +42,7 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -51,13 +52,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary);
-  background-image: radial-gradient(circle at 50% 0%, rgba(233, 117, 131, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(233, 117, 131, 0.02) 0%, transparent 30%);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(233, 117, 131, 0.08) 0%, transparent 26%),
+    radial-gradient(circle at 80% 0%, rgba(233, 117, 131, 0.05) 0%, transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(233, 117, 131, 0.03) 0%, transparent 28%);
   background-attachment: fixed;
   color: var(--text-primary);
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   letter-spacing: -0.01em;
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 h1,
@@ -85,6 +89,11 @@ textarea {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
 /* Slim custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -105,6 +114,6 @@ textarea {
 }
 
 ::selection {
-  background-color: rgba(233, 117, 131, 0.2);
-  color: var(--accent-color);
+  background-color: rgba(233, 117, 131, 0.22);
+  color: #ffffff;
 }
