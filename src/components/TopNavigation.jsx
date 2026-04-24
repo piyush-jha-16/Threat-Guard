@@ -36,9 +36,9 @@ const TopNavigation = ({ isDarkMode, toggleTheme, onNavigate, activeView }) => {
             </svg>
             <span>Documentation</span>
           </button>
-        </div>
 
-        <div className="nav-right">
+          <div className="top-nav-divider"></div>
+
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             <div className={`toggle-icon ${isDarkMode ? 'dark' : 'light'}`}>
               <svg className="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,6 +58,8 @@ const TopNavigation = ({ isDarkMode, toggleTheme, onNavigate, activeView }) => {
             </div>
           </button>
         </div>
+
+        <div className="nav-right"></div>
       </nav>
       
       <div className="nav-separator"></div>

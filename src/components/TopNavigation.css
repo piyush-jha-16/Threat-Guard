@@ -170,26 +170,21 @@
 
 .nav-right {
   flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .theme-toggle {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 8px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px 12px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 1px 3px var(--shadow-color), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
 }
 
 .theme-toggle::before {
@@ -202,10 +197,10 @@
 }
 
 .theme-toggle:hover {
-  border-color: var(--accent-color);
-  box-shadow: 0 4px 16px var(--accent-glow);
-  background: var(--bg-secondary);
-  transform: translateY(-2px);
+  color: var(--accent-color);
+  transform: translateY(-1px) scale(1.01);
+  background: rgba(233, 117, 131, 0.1);
+  border-color: rgba(233, 117, 131, 0.16);
 }
 
 .theme-toggle:hover::before {
@@ -316,7 +311,6 @@
   }
 
   .theme-toggle {
-    width: 40px;
-    height: 40px;
+    padding: 8px 10px;
   }
 }
