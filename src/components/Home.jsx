@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
 
 const Home = () => {
     const [showFeatures, setShowFeatures] = useState(false);
+    const featuresRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,6 +16,11 @@ const Home = () => {
         contentElement?.addEventListener('scroll', handleScroll);
         return () => contentElement?.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const handleScrollToFeatures = () => {
+        featuresRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     const features = [
         {
             icon: (
@@ -100,16 +106,21 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="scroll-indicator">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button
+                    type="button"
+                    className="scroll-indicator"
+                    onClick={handleScrollToFeatures}
+                    aria-label="Scroll to features"
+                >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                </div>
+                </button>
             </header>
 
-            <div className={`features-grid ${showFeatures ? 'visible' : ''}`}>
-                {features.map((feature, index) => (
-                    <div className="feature-card" key={index}>
+            <div ref={featuresRef} className={`features-grid ${showFeatures ? 'visible' : ''}`}>
+                {features.map((feature) => (
+                    <div className="feature-card" key={feature.title}>
                         <div className="feature-icon">
                             {feature.icon}
                         </div>
@@ -125,7 +136,7 @@ const Home = () => {
                 <div className="footer-content">
                     <p>&copy; 2026 Threat Guard. All rights reserved.</p>
                     <div className="footer-links">
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', fontWeight: '500' }}>Rule Based Detection</span>
+                        <span className="footer-note">Rule Based Detection</span>
                     </div>
                 </div>
             </footer>

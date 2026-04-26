@@ -31,8 +31,8 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(233, 117, 131, 0.08);
-    border: 1px solid rgba(233, 117, 131, 0.2);
+    background: var(--accent-soft-bg);
+    border: 1px solid var(--accent-soft-border);
     color: var(--accent-color);
     font-size: 0.8rem;
     font-weight: 600;
@@ -142,11 +142,20 @@
     animation: bounce 2s infinite;
     cursor: pointer;
     opacity: 0.85;
+    border: 0;
+    background: transparent;
+    padding: 0;
 }
 
 .scroll-indicator svg {
     width: 32px;
     height: 32px;
+}
+
+.scroll-indicator:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 6px;
+    border-radius: 8px;
 }
 
 @keyframes bounce {
@@ -190,11 +199,11 @@
     animation: float 3s ease-in-out infinite;
 }
 
-.stat-item:nth-child(2) {
+.stat-item:nth-child(3) {
     animation-delay: 0.2s;
 }
 
-.stat-item:nth-child(3) {
+.stat-item:nth-child(5) {
     animation-delay: 0.4s;
 }
 
@@ -352,6 +361,23 @@
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+.footer-note {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-indicator,
+    .stat-item,
+    .feature-card,
+    .home-section,
+    .features-grid {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 .footer-links a {

@@ -18,31 +18,51 @@
   --shadow-elevated: rgba(0, 0, 0, 0.45);
   --accent-color: #E97583;
   --accent-hover: #F08593;
+  --accent-strong: #E85D6F;
+  --accent-rgb: 233, 117, 131;
   --accent-glow: rgba(233, 117, 131, 0.15);
+  --accent-soft-bg: rgba(233, 117, 131, 0.1);
+  --accent-soft-border: rgba(233, 117, 131, 0.2);
+  --accent-soft-active: rgba(233, 117, 131, 0.12);
+  --accent-soft-active-border: rgba(233, 117, 131, 0.24);
+  --brand-gradient: linear-gradient(135deg, #E97583 0%, #F08593 50%, #E85D6F 100%);
+  --bg-orb-1: rgba(233, 117, 131, 0.08);
+  --bg-orb-2: rgba(233, 117, 131, 0.05);
+  --bg-orb-3: rgba(233, 117, 131, 0.03);
   --glass-bg: rgba(20, 20, 20, 0.75);
   --glass-border: rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="light"] {
-  --bg-primary: #fafafa;
+  --bg-primary: #f4f6f8;
   --bg-secondary: #ffffff;
-  --bg-tertiary: #f4f4f5;
-  --text-primary: #18181b;
-  --text-secondary: #52525b;
-  --text-tertiary: #71717a;
-  --border-color: #e4e4e7;
-  --shadow-color: rgba(0, 0, 0, 0.04);
-  --shadow-elevated: rgba(0, 0, 0, 0.08);
-  --accent-color: #E97583;
-  --accent-hover: #F08593;
-  --accent-glow: rgba(233, 117, 131, 0.12);
-  --glass-bg: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(0, 0, 0, 0.04);
+  --bg-tertiary: #eaf0f5;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --border-color: #d7dee6;
+  --shadow-color: rgba(15, 23, 42, 0.05);
+  --shadow-elevated: rgba(15, 23, 42, 0.1);
+  --accent-color: #c96a7a;
+  --accent-hover: #b85d6f;
+  --accent-strong: #a45061;
+  --accent-rgb: 201, 106, 122;
+  --accent-glow: rgba(201, 106, 122, 0.14);
+  --accent-soft-bg: rgba(201, 106, 122, 0.1);
+  --accent-soft-border: rgba(201, 106, 122, 0.22);
+  --accent-soft-active: rgba(201, 106, 122, 0.13);
+  --accent-soft-active-border: rgba(201, 106, 122, 0.28);
+  --brand-gradient: linear-gradient(135deg, #b85d6f 0%, #c96a7a 55%, #a45061 100%);
+  --bg-orb-1: rgba(170, 184, 201, 0.16);
+  --bg-orb-2: rgba(201, 106, 122, 0.08);
+  --bg-orb-3: rgba(116, 139, 167, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(116, 139, 167, 0.18);
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 body {
@@ -53,9 +73,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary);
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(233, 117, 131, 0.08) 0%, transparent 26%),
-    radial-gradient(circle at 80% 0%, rgba(233, 117, 131, 0.05) 0%, transparent 32%),
-    radial-gradient(circle at 100% 100%, rgba(233, 117, 131, 0.03) 0%, transparent 28%);
+    radial-gradient(circle at 20% 20%, var(--bg-orb-1) 0%, transparent 26%),
+    radial-gradient(circle at 80% 0%, var(--bg-orb-2) 0%, transparent 32%),
+    radial-gradient(circle at 100% 100%, var(--bg-orb-3) 0%, transparent 28%);
   background-attachment: fixed;
   color: var(--text-primary);
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -114,6 +134,6 @@ textarea {
 }
 
 ::selection {
-  background-color: rgba(233, 117, 131, 0.22);
+  background-color: var(--accent-soft-active);
   color: #ffffff;
 }

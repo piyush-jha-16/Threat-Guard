@@ -9,7 +9,7 @@
 .documentation-hero {
   margin-bottom: 20px;
   padding: 24px 26px;
-  background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(233, 117, 131, 0.05) 100%);
+  background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--accent-soft-bg) 100%);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   box-shadow: 0 6px 18px var(--shadow-color);
@@ -24,8 +24,8 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--accent-color);
-  background: rgba(233, 117, 131, 0.1);
-  border: 1px solid rgba(233, 117, 131, 0.2);
+  background: var(--accent-soft-bg);
+  border: 1px solid var(--accent-soft-border);
   margin-bottom: 12px;
 }
 
@@ -148,7 +148,7 @@
   padding: 10px 11px;
   border-radius: 10px;
   border: 1px solid var(--border-color);
-  background: rgba(233, 117, 131, 0.03);
+  background: rgba(var(--accent-rgb), 0.05);
 }
 
 .feature-item h3,
@@ -171,11 +171,11 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  background: linear-gradient(120deg, rgba(233, 117, 131, 0.09), rgba(233, 117, 131, 0.02));
+  background: linear-gradient(120deg, rgba(var(--accent-rgb), 0.11), rgba(var(--accent-rgb), 0.03));
 }
 
 .paper-download-button {
-  border: 1px solid rgba(233, 117, 131, 0.28);
+  border: 1px solid var(--accent-soft-active-border);
   background: var(--accent-color);
   color: #ffffff;
   text-decoration: none;

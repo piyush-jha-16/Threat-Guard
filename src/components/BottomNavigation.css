@@ -121,8 +121,8 @@
 }
 
 .nav-item.active .nav-icon {
-  background: linear-gradient(135deg, #E97583 0%, #F08593 50%, #E85D6F 100%);
-  box-shadow: 0 6px 20px var(--accent-glow), 0 2px 8px rgba(233, 117, 131, 0.4);
+  background: var(--brand-gradient);
+  box-shadow: 0 6px 20px var(--accent-glow), 0 2px 8px rgba(var(--accent-rgb), 0.35);
   transform: scale(1.05);
 }
 
@@ -132,7 +132,7 @@
 
 .nav-item.active:hover .nav-icon {
   transform: scale(1.12);
-  box-shadow: 0 8px 24px var(--accent-glow), 0 4px 12px rgba(233, 117, 131, 0.5);
+  box-shadow: 0 8px 24px var(--accent-glow), 0 4px 12px rgba(var(--accent-rgb), 0.42);
 }
 
 .nav-item.active .nav-icon svg {

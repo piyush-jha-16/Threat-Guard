@@ -211,7 +211,7 @@
 
 .auth-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px var(--accent-glow), 0 4px 8px rgba(233, 117, 131, 0.4);
+  box-shadow: 0 8px 16px var(--accent-glow), 0 4px 8px rgba(var(--accent-rgb), 0.35);
 }
 
 .auth-button:active {
