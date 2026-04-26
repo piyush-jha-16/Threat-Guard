@@ -24,7 +24,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #E97583 30%, #F08593 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--accent-color) 30%, var(--accent-hover) 70%, transparent 100%);
   opacity: 0.8;
 }
 
@@ -110,14 +110,14 @@
 .nav-feature:hover {
   color: var(--accent-color);
   transform: translateY(-1px) scale(1.01);
-  background: rgba(233, 117, 131, 0.1);
-  border: 1px solid rgba(233, 117, 131, 0.16);
+  background: var(--accent-soft-bg);
+  border: 1px solid var(--accent-soft-border);
 }
 
 .nav-feature.active {
   color: var(--accent-color);
-  background: rgba(233, 117, 131, 0.12);
-  border: 1px solid rgba(233, 117, 131, 0.22);
+  background: var(--accent-soft-active);
+  border: 1px solid var(--accent-soft-active-border);
   box-shadow: 0 4px 12px var(--accent-glow);
 }
 
@@ -153,7 +153,7 @@
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  background: linear-gradient(135deg, #E97583 0%, #F08593 50%, #E85D6F 100%);
+  background: var(--brand-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -165,7 +165,7 @@
 
 .brand-name:hover {
   transform: scale(1.02);
-  text-shadow: 0 0 20px rgba(233, 117, 131, 0.4);
+  text-shadow: 0 0 20px rgba(var(--accent-rgb), 0.35);
 }
 
 .nav-right {
@@ -199,8 +199,8 @@
 .theme-toggle:hover {
   color: var(--accent-color);
   transform: translateY(-1px) scale(1.01);
-  background: rgba(233, 117, 131, 0.1);
-  border-color: rgba(233, 117, 131, 0.16);
+  background: var(--accent-soft-bg);
+  border-color: var(--accent-soft-border);
 }
 
 .theme-toggle:hover::before {
