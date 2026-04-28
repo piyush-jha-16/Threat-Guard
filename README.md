@@ -24,6 +24,7 @@ Threat Guard combines a React frontend with a Python Flask backend to scan uploa
 
 - Document upload and scanning via a drag-and-drop interface
 - Real-time threat detection using a pure-Python rule engine
+- URL inspection with phishing, redirect, and obfuscation checks
 - Per-file scan results with matched rule details, severity classification, and file metadata (SHA-256, MD5, entropy)
 - Dark and light theme support
 - Responsive layout with bottom navigation
@@ -199,7 +200,7 @@ npm start
 ```
 The application will open at `http://localhost:3000`.
 
-Both servers must be running simultaneously for the scan functionality to work.
+Both servers must be running simultaneously for the file and URL scan functionality to work.
 
 ---
 
