@@ -1,3 +1,9 @@
+"""
+Threat Guard Backend API
+Main Flask application for file and URL security scanning.
+Provides RESTful endpoints for threat analysis and detection.
+"""
+
 import os
 import traceback
 from flask import Flask, request, jsonify
