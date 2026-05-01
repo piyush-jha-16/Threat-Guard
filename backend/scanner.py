@@ -1,6 +1,14 @@
 """
 scanner.py - Document Scanner for Threat Guard
+
 Pure-Python pattern matching engine focused on document threat detection.
+Provides rule-based scanning for files with severity classification and detailed threat reporting.
+
+Key Features:
+- Pattern-based threat detection using custom rules
+- Entropy analysis for compressed/encrypted content
+- SHA-256 and MD5 hashing for file integrity
+- Severity-based threat aggregation (clean -> critical)
 """
 
 import os
