@@ -1,5 +1,8 @@
 # Threat Guard URL Scanner Guide
 
+> **Last Updated:** May 2026  
+> **Version:** 1.0
+
 ## Overview
 
 The URL scanner in Threat Guard is a backend, rule-based detector implemented in `backend/url_scanner.py` and exposed through a Flask API endpoint in `backend/app.py`.
