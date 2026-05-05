@@ -131,6 +131,18 @@ PYTHON_RULES = [
         "condition": 2,
         "case_insensitive": True,
     },
+    {
+        "name": "Embedded_HTML_Or_Script_Payloads",
+        "description": "Detects embedded HTML or script payloads often used for document smuggling or macro-free payload delivery",
+        "severity": "high",
+        "category": "document",
+        "patterns": [
+            b"<script", b"document.write", b"window.location", b"eval(",
+            b"atob(", b"iframe src=", b"onerror="
+        ],
+        "condition": 2,
+        "case_insensitive": True,
+    },
     # --- Execution/PowerShell ---
     {
         "name": "Suspicious_PowerShell_Execution",
