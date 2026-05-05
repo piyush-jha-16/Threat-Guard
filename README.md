@@ -126,6 +126,7 @@ When a user uploads a document and clicks **Start Scan**, the following process 
 | Ransomware_Extensions   | ransomware | Critical | Any ransomware file extension string found             |
 | Phishing_Keywords       | phishing   | High     | Any phishing social-engineering phrase found           |
 | SQL_Injection_Patterns  | injection  | Medium   | 2 or more SQL injection patterns found                 |
+| Embedded_HTML_Or_Script_Payloads | document | High | 2 or more HTML/script payload markers found            |
 
 ---
 
